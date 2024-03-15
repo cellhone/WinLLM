@@ -6,7 +6,7 @@ WSLにPython環境を構築して、Jupyter LabからOpenAI APIを使用し、ll
 
 ## はじめに
 
-- [SSL/llama-cpp-python編](https://github.com/cellhone/WinLLM/tree/main/1.WSL_llamacpp)で、WSL、llama-cpp-pythonの環境が構築済みであること
+- [WSL/llama-cpp-python編](https://github.com/cellhone/WinLLM/tree/main/1.WSL_llamacpp)で、WSL、llama-cpp-pythonの環境が構築済みであること
 - Dockerコンテナのllama-cpp-python `0.2.56` のEmbeddingsバグ対策済みであること（2023.3.12現在）
  
 
