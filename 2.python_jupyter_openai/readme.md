@@ -464,4 +464,4 @@ conda env remove -n llm-3.10  ## 削除
 ```
 <hr>
 
-2023.3.15
+LLM実行委員会

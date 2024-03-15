@@ -1,5 +1,5 @@
 # WindowsでLLM
-# SSL/llama-cpp-python編
+# WSL/llama-cpp-python編
 
 WindowsにWSLをインストールし、llama-cpp-pythonのサーバをDockerで動かすまでの手順。  
 
@@ -10,6 +10,7 @@ WindowsにWSLをインストールし、llama-cpp-pythonのサーバをDockerで
   WindowsやMacなどのPCで、AVXやSSEC等のCPU拡張命令を使用してLLM(Transformer)を高速に動作させるための実行エンジン、量子化モデルを使用することにより、メモリなどのリソース消費量を抑えている  
 - llama-cpp-pythonとは  
   llama.cppのPythonバインディング、またOpenAI API互換サーバとしても起動できる
+- LLMモデルは、メモリ消費を抑えるため、4bit量子化モデ（gguf形式）ルを使用する
 
 
 ### H/W構成
@@ -489,4 +490,4 @@ curl -s -XPOST -H 'Content-Type: application/json' localhost:8080/v1/chat/comple
 
 <hr>
 
-2023.3.15
+LLM実行委員会
