@@ -20,7 +20,7 @@ WindowsにWSLをインストールし、llama-cpp-pythonのサーバをDockerで
 |CPU|Core i7-1265U|
 |Memory|16GB|
 |SSD|512GB|
-|GPU|なし|
+|GPU|なし（Intel UHDはサポート外）|
 |OS|Windows10|
 
 ### メモリ容量の目安
