@@ -487,6 +487,18 @@ python -m llama_cpp.server --model ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_
 curl -s -XPOST -H 'Content-Type: application/json' localhost:8080/v1/chat/completions -d '{"messages": [{"role": "user", "content": "東京の名所は？"}]}'
 ```
 
+### WSLの不要なディストリビューション
+不要になったら丸ごと削除してスッキリする。
+
+```
+## ディストリビューション一覧
+C:\>wsl --list
+Linux 用 Windows サブシステム ディストリビューション:
+Ubuntu-22.04 (既定)
+
+## 削除
+wsl --unregister Ubuntu-22.04
+```
 
 <hr>
 
