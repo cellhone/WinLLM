@@ -1,4 +1,5 @@
 # WindowsでLLM
+<img src="https://github.com/cellhone/WinLLM/tree/main/3.librechat/img/librechat.mkv">
 
 LLMを始めたいが、AzureやOpenAI APIは有料だし、自前でやるにもGPUが無い人のために、手持ちのPCでLLM環境を構築する手順。  
 
