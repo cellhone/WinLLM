@@ -1,20 +1,16 @@
 # WindowsでLLM
 # Python/Jupyter/OpenAI編
-2023.3.13
 
-<hr>
-
-WSLにPython環境を構築して、Jupyter LabからOpenAI APIを使用して、llama-cpp-python Serverにアクセスするまでの手順。
+WSLにPython環境を構築して、Jupyter LabからOpenAI APIを使用し、llama-cpp-pythonサーバにアクセスするまでの手順。
+　  
 
 ## はじめに
-- Markdown形式のプレビューはVS Codeを使う  
-  参考：[Visual Studio CodeでMarkdownをプレビューする](https://qiita.com/k_maki/items/d2ed604ac967e029c9a9)
 
-- 「llama-cpp-python編」で、WSL、llama-cpp-pythonの環境が構築済みであること
+- [SSL/llama-cpp-python編](https://github.com/cellhone/WinLLM/tree/main/1.WSL_llamacpp)で、WSL、llama-cpp-pythonの環境が構築済みであること
 - Dockerコンテナのllama-cpp-python `0.2.56` のEmbeddingsバグ対策済みであること（2023.3.12現在）
  
 
-## バージョン
+### バージョン
 - python 3.10.13  
 - conda 24.1.2  
 - openai 1.13.3
@@ -25,7 +21,7 @@ Pythonのパッケージ管理には、主に`conda`と`pyenv`がある。特に
 本手順では、以下の理由から[conda-forge](https://github.com/conda-forge)を使用した`conda`環境を構築する。
 - Anacondaは、従業員数が200名以上の企業が利用する場合（業務以外での利用も含む）が有償化の対象となるため利用できない
 - conda-forgeはAnacondaと同じcondaで管理できる（私が使い慣れているから）
-- MKL(Intel Math Kernel)に対応した、[Intel Python](https://www.isus.jp/products/psxe/201609-intel-python/)の導入が簡単（Anacondaは独自にパッケージを管理しておりMKLに対応しいている）
+- MKL(Intel Math Kernel)に対応した、[Intel Pythonライブラリ](https://www.isus.jp/products/psxe/201609-intel-python/)の導入が簡単（Anacondaは独自にパッケージを管理しておりMKLに対応しいている）
 - HuggingFace系はcondaでインストールできないパッケージもあるため、基本pipでインストールする
 
 <hr>
@@ -47,7 +43,7 @@ You can undo this by running `conda init --reverse $SHELL`? [yes|no]
 
 ```
 
-`.bashrc`に環境設定が追加される。再ロードしておく。
+`.bashrc`に環境設定が追加される。反映しておく。
 ```
 source ~/.bashrc
 ```
@@ -99,12 +95,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 ### パッケージのインストール
-MKL対応パッケージはintelから入れる。
+今回は不要なので入れなくても良い。  
+
+MKL対応パッケージはintelから入れておく。
 ```
 conda install -c intel numpy scikit-learn scipy ## MLK対応
 ```
 
-以下はよく使うパッケージ、今回は不要。
+以下はよく使うパッケージ。
 ```
 ## よく使うやつ
 conda install pandas matplotlib seaborn plotly gensim statsmodels Pillow joblib flask
@@ -135,7 +133,8 @@ Windows側のブラウザで`http://localhost:18888/`にアクセスする。
 <hr>
 
 ## LLMへのアクセス
-OpenAI APIを使った実装をJupyterで実行し、llama-cpp-pythonのLLMにアクセスする。 
+OpenAI APIを使った実装をJupyterで実行し、llama-cpp-pythonサーバ
+で起動したLLMにアクセスする。 
 
 OpenAIのパッケージはv1.0以降、API仕様が大幅に変更となった。本手順では、v1.0以降のAPI仕様で実装する。  
 毎回返答が変わらないように、temperature、top_pの値は低く(0.01)指定している。
@@ -160,13 +159,14 @@ docker exec -it elyza /bin/bash
 
 ## Docker内で起動
 cd　/home/model
-python -m llama_cpp.server --model ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf --chat_format llama-2 --port 8080 --host 127.0.0.1 ## Elyza
+python -m llama_cpp.server --model ELYZA-japanese-Llama-2-7b-fast-instruct-q4_K_M.gguf --chat_format llama-2 --port 8080 --host 0.0.0.0 ## Elyza
 ```
 
 
 ### OpenAIパッケージのインストール
-OpenAIのパッケージはv1.0以降、API仕様が大幅に変更となった。本手順では、v1.0以降のAPI仕様で実装する。
-LLM関連は`pip`でインストールする（condaで入った場合でもバージョンが古い事があるので）
+OpenAIのパッケージはv1.0以降、API仕様が大幅に変更となった。  
+本手順では、v1.0以降のAPI仕様で実装する。  
+LLM関連は`pip`でインストールすることにする。
 ```
 pip install openai
 ```
@@ -458,10 +458,10 @@ pip cache purge
 ### conda環境
 ```
 conda info -e           ## 仮想環境一覧
-conda activate llm3.10  ## 仮想環境に入る
+conda activate llm-3.10  ## 仮想環境に入る
 conda deactivate        ## 仮想環境から出る
-conda env remove -n llm3.10  ## 削除
+conda env remove -n llm-3.10  ## 削除
 ```
 <hr>
 
-Author: Makoto OKITA
+2023.3.15
