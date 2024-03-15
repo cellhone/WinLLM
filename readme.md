@@ -12,7 +12,7 @@ WSLにPython環境を構築して、Jupyter LabからOpenAI APIを使用し、ll
 
 ### 3. LibreChat編
 Chat UIでローカルChatGPTっぽい環境を構築する。UIは[LibreChat](https://github.com/danny-avila/LibreChat)を
-使用し、ローカルのLLMに接続する手順。
+使用し、llama-cpp-pythonサーバのLLMに接続する手順。
 
 <hr>
 
