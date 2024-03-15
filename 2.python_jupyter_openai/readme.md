@@ -21,7 +21,7 @@ Pythonのパッケージ管理には、主に`conda`と`pyenv`がある。特に
 本手順では、以下の理由から[conda-forge](https://github.com/conda-forge)を使用した`conda`環境を構築する。
 - Anacondaは、従業員数が200名以上の企業が利用する場合（業務以外での利用も含む）が有償化の対象となるため利用できない
 - conda-forgeはAnacondaと同じcondaで管理できる（私が使い慣れているから）
-- MKL(Intel Math Kernel)に対応した、[Intel Pythonライブラリ](https://www.isus.jp/products/psxe/201609-intel-python/)の導入が簡単（Anacondaは独自にパッケージを管理しておりMKLに対応しいている）
+- MKL(Intel Math Kernel)に対応した、[Intel Pythonライブラリ](https://www.intel.com/content/www/us/en/developer/articles/technical/intel-mkl-and-third-party-applications-how-to-use-them-together.html)の導入が簡単（Anacondaは独自にパッケージを管理しておりMKLに対応しいている）
 - HuggingFace系はcondaでインストールできないパッケージもあるため、基本pipでインストールする
 
 <hr>
