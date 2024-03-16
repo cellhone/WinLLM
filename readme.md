@@ -1,1 +1,1 @@
-[okitalabs/WinLLM](https://github.com/okitalabs)に移動しました。
+[okitalabs/WinLLM](https://github.com/okitalabs/WinLLM)に移動しました。
